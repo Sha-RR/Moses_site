@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment — Evergreen Clinic</title>
+  <meta name="description" content="Book an appointment at Evergreen Clinic online. Same-day and next-day appointments available." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .book-hero { background: var(--navy); padding: 4rem 2rem 3rem; }
+    .book-hero .section-label { color: var(--accent); }
+    .book-hero h1 { color: #fff; font-size: 42px; margin-top: 0.5rem; }
+    .book-hero p { color: rgba(255,255,255,0.6); font-size: 15px; margin-top: 0.75rem; font-weight: 300; }
+    .book-section { padding: 4rem 2rem; background: var(--cream); }
+    .book-grid { display: grid; grid-template-columns: 1fr 380px; gap: 3rem; align-items: start; margin-top: 2rem; }
+    .book-form-card { background: #fff; border-radius: var(--radius-xl); border: 1px solid var(--border); padding: 2.5rem; }
+    .form-section-title { font-size: 13px; letter-spacing: 0.1em; color: var(--teal); font-weight: 500; text-transform: uppercase; margin: 2rem 0 1rem; }
+    .form-section-title:first-child { margin-top: 0; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    label { display: block; font-size: 13px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+    label .req { color: var(--teal); }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%; padding: 11px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(26,107,107,0.12);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+    .radio-group { display: flex; flex-direction: column; gap: 0.6rem; }
+    .radio-option { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .radio-option input[type="radio"] { width: 18px; height: 18px; accent-color: var(--teal); }
+    .radio-option span { font-size: 14px; color: var(--text); }
+    .submit-btn { width: 100%; background: var(--teal); color: #fff; padding: 15px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 500; border: none; cursor: pointer; transition: background 0.2s; margin-top: 0.5rem; }
+    .submit-btn:hover { background: var(--teal-dark); }
+    .form-note { font-size: 12px; color: var(--muted); margin-top: 0.75rem; text-align: center; font-weight: 300; }
+    .book-sidebar { display: flex; flex-direction: column; gap: 1.25rem; position: sticky; top: 88px; }
+    .sidebar-card { background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 1.5rem; }
+    .sidebar-card h3 { font-size: 16px; font-weight: 500; color: var(--navy); margin-bottom: 0.75rem; font-family: 'DM Sans', sans-serif; }
+    .sidebar-card p { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+    .call-card { background: var(--teal); border-color: var(--teal); }
+    .call-card h3 { color: #fff; }
+    .call-card p { color: rgba(255,255,255,0.7); }
+    .call-number { font-size: 22px; font-weight: 500; color: #fff; margin: 0.5rem 0; font-family: 'Fraunces', serif; }
+    .call-hours { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 300; }
+    .checklist { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; }
+    .checklist li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--muted); font-weight: 300; line-height: 1.5; }
+    .checklist li i { color: var(--teal); font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+    @media(max-width:900px){ .book-grid { grid-template-columns: 1fr; } .book-sidebar { position: static; } }
+    @media(max-width:600px){ .form-row { grid-template-columns: 1fr; } }
+    .success-message { display: none; text-align: center; padding: 3rem 2rem; }
+    .success-message i { font-size: 64px; color: var(--teal); margin-bottom: 1rem; }
+    .success-message h2 { font-size: 28px; color: var(--navy); margin-bottom: 1rem; }
+    .success-message p { color: var(--muted); font-size: 15px; font-weight: 300; }
+  </style>
+</head>
+<body>
+
+  <div class="notice-bar">
+    <p>📍 Same-day appointments available &mdash; Call <a href="tel:+19095550180">(909) 555-0180</a> for urgent needs</p>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div>
+          <div class="logo-name">Evergreen Clinic</div>
+          <div class="logo-sub">Family &amp; Specialty Care</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="providers.html">Providers</a></li>
+        <li><a href="../index.html#location">Location</a></li>
+        <li><a href="../index.html#patients">Patient Info</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="nav-cta" style="background:var(--accent)!important;color:var(--navy)!important">Book Appointment</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="book-hero">
+    <div class="container">
+      <div class="section-label">Scheduling</div>
+      <h1>Book an <em>Appointment</em></h1>
+      <p>Fill out the form below and our team will confirm your appointment within 1 business hour.</p>
+    </div>
+  </div>
+
+  <section class="book-section">
+    <div class="container">
+      <div class="book-grid">
+
+        <div class="book-form-card">
+          <form id="booking-form" novalidate>
+
+            <div class="form-section-title">Visit Type</div>
+            <div class="form-group">
+              <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="visit_type" value="in-person" checked /><span>In-Person Visit</span></label>
+                <label class="radio-option"><input type="radio" name="visit_type" value="telehealth" /><span>Telehealth (Video) Visit</span></label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service / Reason for Visit <span class="req">*</span></label>
+              <select id="service" name="service" required>
+                <option value="">Select a service...</option>
+                <option value="primary">Primary Care / Annual Exam</option>
+                <option value="pediatrics">Pediatrics</option>
+                <option value="womens">Women's Health / GYN</option>
+                <option value="mental">Mental Health</option>
+                <option value="lab">Lab Work</option>
+                <option value="telehealth">Telehealth Visit</option>
+                <option value="sick">Sick Visit (Urgent)</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="provider">Preferred Provider</label>
+              <select id="provider" name="provider">
+                <option value="">No preference</option>
+                <option value="reyes">Dr. Sarah Reyes, MD</option>
+                <option value="kim">Dr. Michael Kim, DO</option>
+                <option value="patel">Dr. Laura Patel, MD</option>
+                <option value="torres">James Torres, NP</option>
+                <option value="chen">Dr. Angela Chen, MD</option>
+                <option value="nguyen">Dr. Robert Nguyen, DO</option>
+              </select>
+            </div>
+
+            <div class="form-section-title">Preferred Date &amp; Time</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Preferred Date <span class="req">*</span></label>
+                <input type="date" id="date" name="date" required />
+              </div>
+              <div class="form-group">
+                <label for="time">Preferred Time</label>
+                <select id="time" name="time">
+                  <option value="">Any time</option>
+                  <option value="morning">Morning (8–12 PM)</option>
+                  <option value="afternoon">Afternoon (12–5 PM)</option>
+                  <option value="late">Late Afternoon (5–6 PM)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-section-title">Patient Information</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span class="req">*</span></label>
+                <input type="text" id="first-name" name="first_name" required placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span class="req">*</span></label>
+                <input type="text" id="last-name" name="last_name" required placeholder="Smith" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="dob">Date of Birth <span class="req">*</span></label>
+                <input type="date" id="dob" name="dob" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="(555) 000-0000" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="patient-type">New or Returning Patient? <span class="req">*</span></label>
+              <select id="patient-type" name="patient_type" required>
+                <option value="">Select...</option>
+                <option value="new">New Patient</option>
+                <option value="returning">Returning Patient</option>
+              </select>
+            </div>
+
+            <div class="form-section-title">Insurance</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="insurance">Insurance Plan</label>
+                <select id="insurance" name="insurance">
+                  <option value="">Select or self-pay</option>
+                  <option value="bcbs">Blue Cross Blue Shield</option>
+                  <option value="aetna">Aetna</option>
+                  <option value="uhc">United Healthcare</option>
+                  <option value="cigna">Cigna</option>
+                  <option value="medicare">Medicare</option>
+                  <option value="medi-cal">Medi-Cal</option>
+                  <option value="humana">Humana</option>
+                  <option value="anthem">Anthem</option>
+                  <option value="tricare">Tricare</option>
+                  <option value="covca">Covered California</option>
+                  <option value="self">Self-Pay</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="member-id">Member ID</label>
+                <input type="text" id="member-id" name="member_id" placeholder="Optional" />
+              </div>
+            </div>
+
+            <div class="form-section-title">Additional Notes</div>
+            <div class="form-group">
+              <label for="notes">Describe your symptoms or reason for visit</label>
+              <textarea id="notes" name="notes" placeholder="Tell us anything that will help us prepare for your visit..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="ti ti-calendar-check" aria-hidden="true"></i> Request Appointment
+            </button>
+            <p class="form-note">Our team will confirm your appointment within 1 business hour. For urgent needs, call (909) 555-0180.</p>
+          </form>
+
+          <div class="success-message" id="success-msg">
+            <i class="ti ti-circle-check" aria-hidden="true"></i>
+            <h2>Appointment Requested!</h2>
+            <p>Thank you. Our team will confirm your appointment via phone or email within 1 business hour. If you need immediate assistance, please call (909) 555-0180.</p>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="book-sidebar">
+
+          <div class="sidebar-card call-card">
+            <h3><i class="ti ti-phone" aria-hidden="true"></i> Prefer to call?</h3>
+            <div class="call-number">(909) 555-0180</div>
+            <div class="call-hours">Mon–Fri 8AM–6PM · Sat 9AM–2PM</div>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>What to bring</h3>
+            <ul class="checklist">
+              <li><i class="ti ti-check" aria-hidden="true"></i> Photo ID (driver's license or passport)</li>
+              <li><i class="ti ti-check" aria-hidden="true"></i> Insurance card (if applicable)</li>
+              <li><i class="ti ti-check" aria-hidden="true"></i> List of current medications</li>
+              <li><i class="ti ti-check" aria-hidden="true"></i> Completed new patient forms (if new)</li>
+              <li><i class="ti ti-check" aria-hidden="true"></i> Referral letter (if required)</li>
+              <li><i class="ti ti-check" aria-hidden="true"></i> Co-pay (cash, card, or check)</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Cancellation policy</h3>
+            <p>We ask that you cancel or reschedule at least 24 hours in advance. You can call us or manage your appointment through the patient portal.</p>
+          </div>
+
+          <div class="sidebar-card">
+            <h3>Telehealth visits</h3>
+            <p>For video visits, you'll receive a secure link via email 15 minutes before your appointment. No special app required — works on any device with a camera.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none;padding-top:0;padding:2rem 0">
+        <span class="footer-bottom-text">&copy; <span id="footer-year"></span> Evergreen Clinic. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="hipaa.html">HIPAA Notice</a>
+          <a href="../index.html">← Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Set minimum date to today
+    const dateInput = document.getElementById('date');
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
+    // Pre-select provider from URL param
+    const params = new URLSearchParams(window.location.search);
+    const providerParam = params.get('provider');
+    if (providerParam) {
+      const sel = document.getElementById('provider');
+      const opt = [...sel.options].find(o => o.value === providerParam);
+      if (opt) opt.selected = true;
+    }
+
+    // Form submission
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // TODO: Replace with real API call or form service (e.g. Formspree, backend endpoint)
+      // Example: fetch('/api/appointments', { method: 'POST', body: new FormData(this) })
+      this.style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
