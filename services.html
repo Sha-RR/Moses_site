@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Evergreen Clinic</title>
+  <meta name="description" content="Explore all services offered at Evergreen Clinic including primary care, pediatrics, women's health, mental health, lab services, and telehealth." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .page-hero { background: var(--navy); padding: 5rem 2rem 4rem; }
+    .page-hero .section-label { color: var(--accent); }
+    .page-hero h1 { color: #fff; font-size: 46px; margin-top: 0.5rem; }
+    .page-hero p { color: rgba(255,255,255,0.6); font-size: 16px; max-width: 560px; margin-top: 1rem; font-weight: 300; }
+    .service-detail { padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+    .service-detail:nth-child(even) { background: var(--cream); }
+    .service-detail-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+    .service-detail:nth-child(even) .service-detail-inner { direction: rtl; }
+    .service-detail:nth-child(even) .service-detail-inner > * { direction: ltr; }
+    .service-detail-icon { width: 80px; height: 80px; border-radius: 20px; background: var(--mint); display: flex; align-items: center; justify-content: center; font-size: 36px; color: var(--teal); margin-bottom: 1.5rem; }
+    .service-detail h2 { font-size: 32px; color: var(--navy); margin-bottom: 1rem; font-weight: 400; }
+    .service-detail p { color: var(--muted); line-height: 1.75; font-weight: 300; margin-bottom: 1rem; }
+    .service-list { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .service-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text); }
+    .service-list li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+    @media(max-width:768px){ .service-detail-inner { grid-template-columns: 1fr; } .service-detail:nth-child(even) .service-detail-inner { direction: ltr; } }
+  </style>
+</head>
+<body>
+
+  <div class="notice-bar">
+    <p>📍 Now accepting new patients &mdash; <a href="book.html">Book your first appointment today</a></p>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div>
+          <div class="logo-name">Evergreen Clinic</div>
+          <div class="logo-sub">Family &amp; Specialty Care</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="services.html" style="color:var(--teal)">Services</a></li>
+        <li><a href="providers.html">Providers</a></li>
+        <li><a href="../index.html#location">Location</a></li>
+        <li><a href="../index.html#patients">Patient Info</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="nav-cta">Book Appointment</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">Our Services</div>
+      <h1>Care for every<br><em>stage of life</em></h1>
+      <p>We offer a full spectrum of healthcare services under one roof — from annual checkups to specialty care, all delivered with compassion.</p>
+    </div>
+  </div>
+
+  <div id="primary" class="service-detail">
+    <div class="service-detail-inner">
+      <div>
+        <div class="service-detail-icon"><i class="ti ti-heartbeat" aria-hidden="true"></i></div>
+      </div>
+      <div>
+        <h2>Primary Care</h2>
+        <p>Our primary care team provides comprehensive healthcare for patients of all ages. We focus on preventive medicine, early detection, and management of chronic conditions to keep you at your best.</p>
+        <p>Building a long-term relationship with a primary care provider is one of the most important investments in your health. We'll be there through every season of life.</p>
+        <ul class="service-list">
+          <li>Annual wellness exams &amp; physical checkups</li>
+          <li>Chronic disease management (diabetes, hypertension, asthma)</li>
+          <li>Preventive screenings and immunizations</li>
+          <li>Acute illness visits (cold, flu, infections)</li>
+          <li>Health risk assessments</li>
+          <li>Referrals to specialists</li>
+        </ul>
+        <a href="book.html" class="btn-teal">Book a Primary Care Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="pediatrics" class="service-detail">
+    <div class="service-detail-inner">
+      <div>
+        <div class="service-detail-icon"><i class="ti ti-vaccine" aria-hidden="true"></i></div>
+      </div>
+      <div>
+        <h2>Pediatrics</h2>
+        <p>From newborn care to adolescent medicine, our pediatric team provides compassionate, evidence-based care for children of all ages. We partner with parents to support healthy development.</p>
+        <ul class="service-list">
+          <li>Newborn and infant care</li>
+          <li>Well-child visits and developmental screenings</li>
+          <li>Childhood vaccinations per CDC schedule</li>
+          <li>School and sports physicals</li>
+          <li>Adolescent medicine and ADHD management</li>
+          <li>Sick visits for common childhood illnesses</li>
+        </ul>
+        <a href="book.html" class="btn-teal">Schedule a Pediatric Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="mental" class="service-detail">
+    <div class="service-detail-inner">
+      <div>
+        <div class="service-detail-icon"><i class="ti ti-brain" aria-hidden="true"></i></div>
+      </div>
+      <div>
+        <h2>Mental Health</h2>
+        <p>Mental health is just as important as physical health. Our integrated behavioral health services provide support for a range of conditions with a judgment-free, compassionate approach.</p>
+        <ul class="service-list">
+          <li>Depression and anxiety evaluation &amp; management</li>
+          <li>Medication management and consultation</li>
+          <li>Stress and burnout counseling</li>
+          <li>Behavioral health screenings</li>
+          <li>Referrals to licensed therapists and psychiatrists</li>
+          <li>Telehealth mental health visits</li>
+        </ul>
+        <a href="book.html" class="btn-teal">Book a Mental Health Appointment</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="womens" class="service-detail">
+    <div class="service-detail-inner">
+      <div>
+        <div class="service-detail-icon"><i class="ti ti-activity" aria-hidden="true"></i></div>
+      </div>
+      <div>
+        <h2>Women's Health</h2>
+        <p>Our women's health services provide comprehensive, compassionate care through every phase of a woman's life — from adolescence through menopause and beyond.</p>
+        <ul class="service-list">
+          <li>Annual GYN exams and Pap smears</li>
+          <li>Prenatal and postpartum care</li>
+          <li>Contraception counseling and management</li>
+          <li>Menopause management</li>
+          <li>Breast health screenings and referrals</li>
+          <li>STI testing and treatment</li>
+        </ul>
+        <a href="book.html" class="btn-teal">Book a Women's Health Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="lab" class="service-detail">
+    <div class="service-detail-inner">
+      <div>
+        <div class="service-detail-icon"><i class="ti ti-needle" aria-hidden="true"></i></div>
+      </div>
+      <div>
+        <h2>Lab &amp; Diagnostics</h2>
+        <p>Our on-site laboratory allows for fast, accurate testing so your provider can make informed decisions the same day. We also coordinate imaging and specialty referrals as needed.</p>
+        <ul class="service-list">
+          <li>Comprehensive blood panels (CBC, metabolic, lipid)</li>
+          <li>Urinalysis and culture</li>
+          <li>Rapid strep, flu, and COVID testing</li>
+          <li>Thyroid and hormone panels</li>
+          <li>EKG (electrocardiogram)</li>
+          <li>Imaging referrals (X-ray, MRI, ultrasound)</li>
+        </ul>
+        <a href="book.html" class="btn-teal">Schedule Lab Work</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="telehealth" class="service-detail">
+    <div class="service-detail-inner">
+      <div>
+        <div class="service-detail-icon"><i class="ti ti-device-laptop" aria-hidden="true"></i></div>
+      </div>
+      <div>
+        <h2>Telehealth</h2>
+        <p>See your provider from the comfort of home via secure video visit. Telehealth is available 7 days a week for many conditions — no travel, no waiting room.</p>
+        <ul class="service-list">
+          <li>Follow-up visits and prescription refills</li>
+          <li>Minor illness evaluation (UTI, cold, rash)</li>
+          <li>Mental health support sessions</li>
+          <li>Lab result reviews</li>
+          <li>Chronic disease check-ins</li>
+          <li>Available via smartphone, tablet, or computer</li>
+        </ul>
+        <a href="book.html" class="btn-teal">Start a Telehealth Visit</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="appt-banner">
+    <h2>Not sure which service<br>is right for <em>you</em>?</h2>
+    <p>Call us and we'll help you find the right provider and service for your needs.</p>
+    <div class="appt-btns">
+      <a href="book.html" class="btn-primary">Book Online</a>
+      <a href="tel:+19095550180" class="btn-outline">Call (909) 555-0180</a>
+    </div>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Evergreen Clinic</div>
+          <p class="footer-desc">Compassionate, comprehensive care for families at every stage of life.</p>
+          <div class="footer-social">
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="ti ti-brand-facebook" aria-hidden="true"></i></a>
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="ti ti-brand-instagram" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="#primary">Primary Care</a></li>
+            <li><a href="#pediatrics">Pediatrics</a></li>
+            <li><a href="#womens">Women's Health</a></li>
+            <li><a href="#mental">Mental Health</a></li>
+            <li><a href="#lab">Lab &amp; Diagnostics</a></li>
+            <li><a href="#telehealth">Telehealth</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Patients</h4>
+          <ul class="footer-links">
+            <li><a href="https://portal.evergreenclinic.com">Patient Portal</a></li>
+            <li><a href="../assets/new-patient-forms.pdf">New Patient Forms</a></li>
+            <li><a href="insurance.html">Billing &amp; Insurance</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Clinic</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="providers.html">Our Providers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-bottom-text">&copy; <span id="footer-year"></span> Evergreen Clinic. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="hipaa.html">HIPAA Notice</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
