@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Providers — Evergreen Clinic</title>
+  <meta name="description" content="Meet the board-certified physicians, nurse practitioners, and specialists at Evergreen Clinic." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .page-hero { background: var(--navy); padding: 5rem 2rem 4rem; }
+    .page-hero .section-label { color: var(--accent); }
+    .page-hero h1 { color: #fff; font-size: 46px; margin-top: 0.5rem; }
+    .page-hero p { color: rgba(255,255,255,0.6); font-size: 16px; max-width: 560px; margin-top: 1rem; font-weight: 300; }
+    .providers-page { padding: 5rem 2rem; background: var(--cream); }
+    .providers-full-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 3rem; }
+    .provider-full-card { background: #fff; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); transition: box-shadow 0.2s; }
+    .provider-full-card:hover { box-shadow: var(--shadow); }
+    .provider-full-avatar { height: 220px; display: flex; align-items: center; justify-content: center; }
+    .provider-full-body { padding: 1.5rem; }
+    .provider-full-name { font-size: 18px; font-weight: 500; color: var(--navy); }
+    .provider-full-cred { font-size: 13px; color: var(--teal); font-weight: 500; margin: 2px 0 4px; }
+    .provider-full-spec { font-size: 13px; color: var(--muted); font-weight: 300; margin-bottom: 1rem; }
+    .provider-full-bio { font-size: 14px; color: var(--muted); line-height: 1.65; font-weight: 300; margin-bottom: 1.25rem; }
+    .provider-full-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.25rem; }
+    .provider-full-tag { background: var(--mint); color: var(--teal); font-size: 11px; padding: 4px 10px; border-radius: 100px; font-weight: 500; }
+    .provider-full-card .btn-teal { width: 100%; text-align: center; padding: 11px; font-size: 14px; }
+    .filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
+    .filter-btn { background: #fff; border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px; font-size: 13px; font-weight: 500; color: var(--navy); cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+    @media(max-width:900px){ .providers-full-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px){ .providers-full-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="notice-bar">
+    <p>📍 Now accepting new patients &mdash; <a href="book.html">Book your first appointment today</a></p>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="logo" href="../index.html">
+        <div class="logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div>
+          <div class="logo-name">Evergreen Clinic</div>
+          <div class="logo-sub">Family &amp; Specialty Care</div>
+        </div>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="providers.html" style="color:var(--teal)">Providers</a></li>
+        <li><a href="../index.html#location">Location</a></li>
+        <li><a href="../index.html#patients">Patient Info</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="nav-cta">Book Appointment</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-label">Our Team</div>
+      <h1>Meet your<br><em>care team</em></h1>
+      <p>Our providers are board-certified, compassionate, and committed to building lasting relationships with every patient and family.</p>
+    </div>
+  </div>
+
+  <section class="providers-page">
+    <div class="container">
+      <div class="section-label">Filter by Specialty</div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterProviders('all', this)">All Providers</button>
+        <button class="filter-btn" onclick="filterProviders('primary', this)">Primary Care</button>
+        <button class="filter-btn" onclick="filterProviders('pediatrics', this)">Pediatrics</button>
+        <button class="filter-btn" onclick="filterProviders('womens', this)">Women's Health</button>
+        <button class="filter-btn" onclick="filterProviders('mental', this)">Mental Health</button>
+        <button class="filter-btn" onclick="filterProviders('geriatrics', this)">Geriatrics</button>
+      </div>
+
+      <div class="providers-full-grid scroll-fade">
+
+        <article class="provider-full-card" data-specialty="primary">
+          <div class="provider-full-avatar prov-a1"><span class="prov-initials">SR</span></div>
+          <!-- Replace with: <img src="../assets/providers/reyes.jpg" alt="Dr. Sarah Reyes" /> -->
+          <div class="provider-full-body">
+            <div class="provider-full-name">Dr. Sarah Reyes, MD</div>
+            <div class="provider-full-cred">Internal Medicine · Family Practice</div>
+            <div class="provider-full-spec">Board Certified — Internal Medicine</div>
+            <p class="provider-full-bio">Dr. Reyes has over 15 years of experience providing compassionate primary care. She specializes in chronic disease management and believes in treating the whole person.</p>
+            <div class="provider-full-tags">
+              <span class="provider-full-tag">Primary Care</span>
+              <span class="provider-full-tag">Diabetes</span>
+              <span class="provider-full-tag">Hypertension</span>
+            </div>
+            <a href="book.html?provider=reyes" class="btn-teal">Book with Dr. Reyes</a>
+          </div>
+        </article>
+
+        <article class="provider-full-card" data-specialty="pediatrics">
+          <div class="provider-full-avatar prov-a2"><span class="prov-initials">MK</span></div>
+          <div class="provider-full-body">
+            <div class="provider-full-name">Dr. Michael Kim, DO</div>
+            <div class="provider-full-cred">Pediatrics · Adolescent Medicine</div>
+            <div class="provider-full-spec">Board Certified — Pediatrics</div>
+            <p class="provider-full-bio">Dr. Kim is a beloved pediatrician known for his patience and warmth with children of all ages. He has a special focus on developmental milestones and adolescent health.</p>
+            <div class="provider-full-tags">
+              <span class="provider-full-tag">Pediatrics</span>
+              <span class="provider-full-tag">Vaccines</span>
+              <span class="provider-full-tag">Adolescent Health</span>
+            </div>
+            <a href="book.html?provider=kim" class="btn-teal">Book with Dr. Kim</a>
+          </div>
+        </article>
+
+        <article class="provider-full-card" data-specialty="womens">
+          <div class="provider-full-avatar prov-a3"><span class="prov-initials">LP</span></div>
+          <div class="provider-full-body">
+            <div class="provider-full-name">Dr. Laura Patel, MD</div>
+            <div class="provider-full-cred">OB/GYN · Women's Health</div>
+            <div class="provider-full-spec">Board Certified — Obstetrics &amp; Gynecology</div>
+            <p class="provider-full-bio">Dr. Patel provides comprehensive women's healthcare with a focus on creating a comfortable, empowering experience. She has delivered over 1,000 babies and specializes in high-risk pregnancies.</p>
+            <div class="provider-full-tags">
+              <span class="provider-full-tag">Women's Health</span>
+              <span class="provider-full-tag">Prenatal</span>
+              <span class="provider-full-tag">Menopause</span>
+            </div>
+            <a href="book.html?provider=patel" class="btn-teal">Book with Dr. Patel</a>
+          </div>
+        </article>
+
+        <article class="provider-full-card" data-specialty="mental geriatrics">
+          <div class="provider-full-avatar prov-a4"><span class="prov-initials">JT</span></div>
+          <div class="provider-full-body">
+            <div class="provider-full-name">James Torres, NP</div>
+            <div class="provider-full-cred">Family Nurse Practitioner</div>
+            <div class="provider-full-spec">AANP Certified — Family Practice</div>
+            <p class="provider-full-bio">James brings a holistic, patient-centered approach to family medicine. He specializes in behavioral health integration and has a deep commitment to geriatric care.</p>
+            <div class="provider-full-tags">
+              <span class="provider-full-tag">Mental Health</span>
+              <span class="provider-full-tag">Geriatrics</span>
+              <span class="provider-full-tag">Chronic Care</span>
+            </div>
+            <a href="book.html?provider=torres" class="btn-teal">Book with James Torres</a>
+          </div>
+        </article>
+
+        <article class="provider-full-card" data-specialty="primary mental">
+          <div class="provider-full-avatar prov-a2"><span class="prov-initials">AC</span></div>
+          <div class="provider-full-body">
+            <div class="provider-full-name">Dr. Angela Chen, MD</div>
+            <div class="provider-full-cred">Family Medicine · Psychiatry</div>
+            <div class="provider-full-spec">Board Certified — Family Medicine</div>
+            <p class="provider-full-bio">Dr. Chen integrates primary care with mental health support, offering patients a seamless experience for both physical and behavioral health needs in one appointment.</p>
+            <div class="provider-full-tags">
+              <span class="provider-full-tag">Primary Care</span>
+              <span class="provider-full-tag">Depression</span>
+              <span class="provider-full-tag">Anxiety</span>
+            </div>
+            <a href="book.html?provider=chen" class="btn-teal">Book with Dr. Chen</a>
+          </div>
+        </article>
+
+        <article class="provider-full-card" data-specialty="primary geriatrics">
+          <div class="provider-full-avatar prov-a1"><span class="prov-initials">RN</span></div>
+          <div class="provider-full-body">
+            <div class="provider-full-name">Dr. Robert Nguyen, DO</div>
+            <div class="provider-full-cred">Geriatrics · Internal Medicine</div>
+            <div class="provider-full-spec">Board Certified — Geriatric Medicine</div>
+            <p class="provider-full-bio">Dr. Nguyen is passionate about improving quality of life for older adults. He takes time to understand each patient's goals and coordinates comprehensive care plans.</p>
+            <div class="provider-full-tags">
+              <span class="provider-full-tag">Geriatrics</span>
+              <span class="provider-full-tag">Memory Care</span>
+              <span class="provider-full-tag">Falls Prevention</span>
+            </div>
+            <a href="book.html?provider=nguyen" class="btn-teal">Book with Dr. Nguyen</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="appt-banner">
+    <h2>Ready to meet your<br><em>new provider</em>?</h2>
+    <p>Book an appointment online or call us to find the right provider for your needs.</p>
+    <div class="appt-btns">
+      <a href="book.html" class="btn-primary">Book Online</a>
+      <a href="tel:+19095550180" class="btn-outline">Call (909) 555-0180</a>
+    </div>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">Evergreen Clinic</div>
+          <p class="footer-desc">Compassionate, comprehensive care for families at every stage of life.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">All Services</a></li>
+            <li><a href="services.html#primary">Primary Care</a></li>
+            <li><a href="services.html#pediatrics">Pediatrics</a></li>
+            <li><a href="services.html#telehealth">Telehealth</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Patients</h4>
+          <ul class="footer-links">
+            <li><a href="https://portal.evergreenclinic.com">Patient Portal</a></li>
+            <li><a href="../assets/new-patient-forms.pdf">New Patient Forms</a></li>
+            <li><a href="insurance.html">Insurance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Clinic</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-bottom-text">&copy; <span id="footer-year"></span> Evergreen Clinic. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="hipaa.html">HIPAA Notice</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function filterProviders(specialty, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.provider-full-card').forEach(card => {
+        const cardSpec = card.getAttribute('data-specialty') || '';
+        card.style.display = (specialty === 'all' || cardSpec.includes(specialty)) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
